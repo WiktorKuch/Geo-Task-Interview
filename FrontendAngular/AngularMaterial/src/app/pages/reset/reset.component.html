@@ -1,0 +1,27 @@
+<div class="login-container">
+    <div [formGroup]="resetForm" class="reset-content">
+        <p class="title">Reset password</p>
+        
+        <mat-form-field appearance="outline" class="username-field">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" matInput type="text">
+
+            <mat-error *ngIf="resetForm.controls['username'].hasError('required')" class="error-message">
+                Username is required
+            </mat-error>
+
+            <mat-error *ngIf="resetForm.controls['username'].hasError('email')" class="error-message">
+                Invalid email
+            </mat-error>
+
+        </mat-form-field>
+
+
+        
+        <button mat-flat-button color="primary" (click)="onSubmit()" [routerLink]="['/login']"><span>Reset password</span></button>
+        <p class="alternative">Go back to: <span [routerLink]="['/login']">Login or</span><span [routerLink]="['/registration']"> Register</span></p>
+        
+
+    
+    </div>
+</div>

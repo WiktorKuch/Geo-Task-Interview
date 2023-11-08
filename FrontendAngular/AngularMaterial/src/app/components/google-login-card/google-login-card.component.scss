@@ -1,0 +1,24 @@
+@import 'src/app/themes/theme.scss';
+.google-card-coontainer{
+    
+    padding: $padding16 11px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border: $thin-border;
+    border-radius: $border-radius5;
+    cursor: pointer;
+    font-weight: bold;
+
+
+    
+    img{
+        width: 10%;
+        height: 60%;
+        position: absolute;
+        left: 2%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+}

@@ -1,0 +1,45 @@
+<div class="login-container">
+    <div [formGroup]="loginForm" class="login-content">
+        <p class="title">Sign in</p>
+        <p class="title-intro">Welcome back!</p>
+        <mat-form-field appearance="outline" class="username-field">
+            <mat-label >Username</mat-label>
+            <input formControlName="username" matInput type="text">
+
+            <mat-error  *ngIf="loginForm.controls['username'].hasError('required')" class="error-message">
+                Username is required
+            </mat-error>
+
+            <mat-error  *ngIf="loginForm.controls['username'].hasError('email')" class="error-message">
+                Invalid email
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="username-field">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'">
+            <mat-icon (click)="hide = !hide" matSuffix >{{hide ? 'visibility_off': 'visibility'}}</mat-icon>
+
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required')" class="error-message">
+                Password is required
+            </mat-error>
+
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="onSubmit()">Login</button>
+
+        
+        <p class="forgot-label">Forgot password ? <span [routerLink]="['/reset']">Reset your password!</span></p>
+        
+        <button mat-flat-button color="primary" ><span [routerLink]="['/registration']">Don't have an account? Sign up</span></button>
+        
+
+        <div class="or-line-divider">
+            <p>Or</p>
+        </div>
+
+        <div class="google-card">
+            <app-google-login-card (click)="onSubmit()"></app-google-login-card>
+        </div>
+    </div>
+</div>

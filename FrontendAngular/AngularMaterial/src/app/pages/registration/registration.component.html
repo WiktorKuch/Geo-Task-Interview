@@ -1,0 +1,54 @@
+<div class="login-container">
+    <div [formGroup]="registerForm" class="register-content">
+        <p class="title">Sign up</p>
+        
+        <mat-form-field appearance="outline" class="username-field">
+            <mat-label>Username</mat-label>
+            <input formControlName="username" matInput type="text">
+
+            <mat-error *ngIf="registerForm.controls['username'].hasError('required')" class="error-message">
+                Username is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['username'].hasError('email')" class="error-message">
+                Invalid email
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="username-field">
+            <mat-label>Password</mat-label>
+            <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'">
+            <mat-icon (click)="hide = !hide" matSuffix >{{hide ? 'visibility_off': 'visibility'}}</mat-icon>
+
+            <mat-error *ngIf="registerForm.controls['password'].hasError('required')" class="error-message">
+                Password is required
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls['password'].hasError('pattern')" class="error-message">
+            Password must contain at least 1 digit, 1 lowercase letter, 1 uppercase letter, and min 8 characters.
+              </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="username-field">
+            <mat-label>Confirm Password</mat-label>
+            <input formControlName="password" matInput [type]=" hideConfirmPassword ? 'password' : 'text'">
+            <mat-icon (click)="hide = !hide" matSuffix >{{hideConfirmPassword ? 'visibility_off': 'visibility'}}</mat-icon>
+
+            <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')" class="error-message">
+                Confirm Password is required
+            </mat-error>
+
+        </mat-form-field>
+        <button mat-flat-button color="primary"  [routerLink]="['/login']" (click)="onSubmit()">Register</button>
+
+        <p class="alternative">Go back to: <span [routerLink]="['/login']">Login</span></p>
+
+        <div class="or-line-divider">
+            <p>Or</p>
+        </div>
+
+        <div class="google-card">
+            <app-google-login-card></app-google-login-card>
+        </div>
+    </div>
+</div>
